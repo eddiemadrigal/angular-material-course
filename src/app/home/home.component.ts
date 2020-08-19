@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {Course} from "../model/course";
-import {COURSES} from "../model/db-data";
+import {Course} from '../model/course';
+import {COURSES} from '../model/db-data';
 
 @Component({
-    selector: 'home',
+    selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
     beginnerCourses: Course[];
+
+    intermediateCourses: Course[];
 
     advancedCourses: Course[];
 
@@ -19,9 +21,11 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
-        const courses:any = Object.values(COURSES);
+        const courses: any = Object.values(COURSES);
 
         this.beginnerCourses = courses.filter(course => course.category === 'BEGINNER');
+
+        this.intermediateCourses = courses.filter(course => course.category === 'INTERMEDIATE');
 
         this.advancedCourses = courses.filter(course => course.category === 'ADVANCED');
     }
